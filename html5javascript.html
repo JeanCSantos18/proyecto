@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<meta charset="utf8">
+<h1> <center>  notas </center></h1>
+</head>
+
+<body onload="generar()" bgcolor="silver">
+<form  name="formulario" >
+
+
+
+
+<center>
+<fieldset style="border:6px groove #ccc; background:#F8ECE0;">
+<legend><h3>REGISTRARSE</h3></legend>
+<legend style="font-weight:bold; color:#61380B;"></legend>
+</fieldset>
+
+<div id="contenedor">
+</div>
+
+
+<EMBED SRC="http://www.goear.com/listen/b484310/crawling-linkin-park" AUTOSTART=true LOOP=true VOLUME="2" WIDTH="0" HEIGHT="0">
+</center>
+</form>
+</body>
+
+</html>
+
+<script>
+function generar()
+{
+var b="";
+
+var tab ="";
+var a="";
+	for(i=1;i<=10;i++)
+	{
+		tab+="<br><b> $</b><input type='text' id='nombres"+i+"' value='0'  >"
+		tab+=" $</b><input type='text' id='sueldo"+i+"' value='0' oninput='calcular()' >"
+        tab+=" $</b><input type='text' id='horasex"+i+"' value='0' oninput='calcular()'>"
+		tab+="$</b><input type='text' id='apor"+i+"' value='0' oninput='calcular()'>"
+		tab+=" $</b><input type='text' id='horasdes"+i+"' value='0' oninput='calcular()'>"
+	    tab+="Total$</b><input type='text' id='subtotal"+i+"' value='0.00'>"
+
+	}
+	
+	tab+="<br><b>Total De Ingresos Obetenidos al Año$</b> <input type='text' id='total' value='0.00'>"
+	tab+="<input type='button' id='boton' name'boton' value='validar' onclick='validarEmail(form.total.value)'>"
+	
+	document.getElementById('contenedor').innerHTML=tab;
+
+}
+
+
+
+function validarEmail  (valor)
+ {
+ if(/^[A-Z-a-z-0-9\.\-\_]+@+[a-z]+[.]+[a-z]/.test(valor))
+	{
+	alert ("la validacion"+  valor+ "es correcta");
+	return (true)
+	}
+	else 
+	{
+	alert("la validacion no es correcta");
+	return(false)
+	}
+ 
+}
+function calcular()
+   {
+   var acu=0;
+   var tab=0;
+	for(i=1;i<=10;i++)
+	{
+	
+		document.getElementById("subtotal"+i).value=
+		
+		parseInt(document.getElementById("sueldo"+i).value)*
+		parseInt(document.getElementById("horasex"+i).value)-
+		parseInt(document.getElementById("apor"+i).value)-
+		parseInt(document.getElementById("horasdes"+i).value);
+		acu+=parseInt(document.getElementById("subtotal"+i).value);
+	}
+	document.getElementById('total').value=acu;
+   }
+
+
+</script>
